@@ -1,0 +1,145 @@
+<!--
+  Birthday Wish Page
+  - Curtain opening animation
+  - Confetti effect
+  - Welcoming message
+  - HTML, CSS, and JS separated for clarity
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .blur-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(248, 225, 244, 0.7);
+            backdrop-filter: blur(12px);
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ribbon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+        }
+        .ribbon {
+            background: linear-gradient(90deg, #d16ba5 0%, #a8327e 100%);
+            color: #fff;
+            font-family: 'Pacifico', 'Segoe Script', cursive, sans-serif;
+            font-size: 2.5em;
+            padding: 24px 60px;
+            border-radius: 60px;
+            box-shadow: 0 4px 24px rgba(168,50,126,0.18);
+            text-align: center;
+            cursor: pointer;
+            letter-spacing: 2px;
+            border: 4px solid #fff;
+            transition: transform 0.2s, box-shadow 0.2s;
+            user-select: none;
+        }
+        .ribbon:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 8px 32px rgba(168,50,126,0.28);
+        }
+        .wish-container {
+            background: rgba(255,255,255,0.85);
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(168,50,126,0.18);
+            padding: 48px 32px 32px 32px;
+            text-align: center;
+            max-width: 480px;
+            margin: 32px auto;
+            display: none;
+        }
+        .wish-title {
+            font-family: 'Pacifico', 'Segoe Script', cursive, sans-serif;
+            font-size: 3em;
+            color: #a8327e;
+            margin-bottom: 0.3em;
+            text-shadow: 2px 2px 12px #fff, 0 0 8px #c777b9;
+        }
+        .wish-text {
+            font-size: 1.5em;
+            color: #6d2177;
+            margin-bottom: 1.5em;
+            font-family: 'Segoe Script', cursive, sans-serif;
+            text-shadow: 1px 1px 8px #fff;
+        }
+        .wish-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .wish-btn {
+            display: inline-block;
+            padding: 14px 38px;
+            font-size: 1.2em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #fff;
+            background: linear-gradient(90deg, #d16ba5 0%, #a8327e 100%);
+            border: none;
+            border-radius: 32px;
+            box-shadow: 0 2px 12px rgba(168,50,126,0.18);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .wish-btn:hover {
+            background: linear-gradient(90deg, #a8327e 0%, #d16ba5 100%);
+            transform: scale(1.08);
+        }
+        .music-player {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio class="music-player" id="music" src="Untitled video - Made with Clipchamp.mp3" loop></audio>
+    <video class="bg-wallpaper" src="0_Couple_Love_3840x2160.mp4" autoplay muted loop playsinline preload="metadata" style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-1;"></video>
+    <div id="blur-overlay" class="blur-overlay">
+        <div class="ribbon-container">
+            <div class="ribbon" id="ribbon">🎀 Tap to Enter 🎀</div>
+        </div>
+    </div>
+    <div class="wish-container" id="wish-container">
+        <h1 class="wish-title">Happy Birthday!</h1>
+        <div class="wish-text">Wishing you a day filled with joy, laughter, and unforgettable moments.<br>May all your dreams come true!</div>
+        <div class="wish-links">
+            <a href="index2.html" class="wish-btn">🎀 Next 🎀</a>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ribbon = document.getElementById('ribbon');
+        ribbon.addEventListener('click', function() {
+            document.getElementById('blur-overlay').style.display = 'none';
+            document.getElementById('wish-container').style.display = 'block';
+            var music = document.getElementById('music');
+            if (music.paused) {
+                music.play();
+            }
+        });
+    });
+    </script>
+</body>
+</html>

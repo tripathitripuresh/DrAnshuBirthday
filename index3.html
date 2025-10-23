@@ -1,0 +1,104 @@
+<!-- Final Page (index3.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .final-bg-video {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        .center-content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .final-buttons {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 32px;
+            z-index: 2;
+        }
+        .final-btn {
+            min-width: 160px;
+            padding: 14px 38px;
+            font-size: 1.2em;
+            color: #fff;
+            background: linear-gradient(90deg, #d16ba5 0%, #a8327e 100%);
+            border: none;
+            border-radius: 32px;
+            box-shadow: 0 2px 12px rgba(168,50,126,0.18);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .final-btn:hover {
+            background: linear-gradient(90deg, #a8327e 0%, #d16ba5 100%);
+            transform: scale(1.08);
+        }
+        .welcome-title {
+            color: #fff;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 16px #a8327e;
+            margin-bottom: 0.5em;
+        }
+        .ready-text {
+            color: #fff;
+            font-size: 1.3em;
+            text-shadow: 1px 1px 12px #a8327e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <audio class="music-player" id="music" src="Untitled video - Made with Clipchamp.mp3" loop></audio>
+    <video class="final-bg-video" src="0_Couple_Hugging_3840x2160.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <!-- Centered Content -->
+    <div class="center-content">
+        <h1 class="welcome-title">Thank You For Being With me!</h1>
+        <p class="ready-text" style="text-align: center;">
+           Happy Birthday to my best best best person 🫶🧿 , bhut late hogya but i hope thora to achha laga hoga , sorry for being late <br>
+Mast aap aise grow karo achee dr bano and hame kabhi na bhulo 😅💗 , <br>And also thank you so much for being ittaaa achha person jo hamesa mere liye rhta hai cahe family ka call ho ya bf kabhi merko low fell nhi hone deta ...
+<br>U're very sweet and cute person yrrr , mast rho happy rho 😅💓 hamesa .. <br>
+Thank you so much 💗🫶🧿.. <br>
+Happy Birthday ek bar aur , aur bhi bhut kuch bolna tha par already late hai and also abb bf bhi to hai  😂😅 so I'm in my limit ... <br>
+U're so cute yrrr by nature baat kar rha afcose by looks also 🫶💗🧿
+        </p>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var music = document.getElementById('music');
+        // Try to autoplay music on page load
+        music.play().catch(function() {
+            // Autoplay might be blocked; user interaction may be needed
+        });
+    });
+    </script>
+    <!-- Final Buttons -->
+    <div class="final-buttons">
+        <a href="index2.html" class="final-btn">Previous Page</a>
+        <a href="index.html" class="final-btn">First Page</a>
+    </div>
+</body>
+</html>

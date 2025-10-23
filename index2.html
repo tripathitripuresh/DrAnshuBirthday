@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Surprise</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Pacifico', Arial, sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(120deg, #f8e1f4 60%, #d16ba5 100%);
+    }
+
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(120deg, rgba(248,225,244,0.7) 60%, rgba(209,107,165,0.7) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      background: transparent;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .video-row {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .video-item {
+      width: 220px;
+      height: 390px;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(168,50,126,0.12);
+      object-fit: cover;
+      border: 3px solid #fff;
+      background: #fff;
+      display: block;
+    }
+
+    .birthday-text {
+      font-size: 2em;
+      font-family: 'Pacifico', cursive, sans-serif;
+      color: #a8327e;
+      margin-bottom: 32px;
+      text-align: center;
+      text-shadow: 1px 1px 8px #fff;
+    }
+
+    .next-btn {
+      display: inline-block;
+      padding: 12px 32px;
+      font-size: 1.1em;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background: #a8327e;
+      border: none;
+      border-radius: 24px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-top: 18px;
+      box-shadow: 0 2px 8px rgba(168,50,126,0.12);
+    }
+
+    .next-btn:hover {
+      background: #d16ba5;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <video autoplay muted loop id="background-video" preload="auto">
+  <source src="istockphoto-1471569271-640_adpp_is.mp4" type="video/mp4" preload="metadata" />
+    Your browser does not support the video tag.
+  </video>
+  <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:2;"></canvas>
+  <div class="content">
+    <div class="video-row">
+      <video class="video-item" src="WhatsApp Video 2025-10-23 at 7.26.06 PM (1).mp4" autoplay muted loop preload="metadata"></video>
+      <video class="video-item" src="WhatsApp Video 2025-10-23 at 7.26.06 PM.mp4" autoplay muted loop preload="metadata"></video>
+          <video class="video-item" src="WhatsApp Video 2025-10-23 at 7.26.07 PM.mp4" autoplay muted loop preload="metadata"></video>
+    </div>
+    <div class="birthday-text">🎀 Happy Birthday Dr Ji 🎀</div>
+    <a href="index3.html" class="next-btn">Next</a>
+  </div>
+  <script>
+  // Simple confetti effect
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let W = window.innerWidth;
+  let H = window.innerHeight;
+  canvas.width = W;
+  canvas.height = H;
+  window.addEventListener('resize', () => {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+  });
+  const confettiColors = ['#d16ba5','#f8e1f4','#fff','#a8327e','#ffb6b9','#ffe082','#b2f7ef'];
+  const confetti = Array.from({length: 80}, () => ({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    r: 6 + Math.random() * 8,
+    d: Math.random() * 1.5 + 1,
+    color: confettiColors[Math.floor(Math.random()*confettiColors.length)],
+    tilt: Math.random()*10-5
+  }));
+  function drawConfetti() {
+    ctx.clearRect(0,0,W,H);
+    confetti.forEach(c => {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, 2*Math.PI);
+      ctx.fillStyle = c.color;
+      ctx.globalAlpha = 0.85;
+      ctx.translate(c.x, c.y);
+      ctx.rotate(c.tilt * Math.PI/180);
+      ctx.translate(-c.x, -c.y);
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+  function updateConfetti() {
+    confetti.forEach(c => {
+      c.y += c.d;
+      c.x += Math.sin(c.tilt/2);
+      c.tilt += Math.random()*2-1;
+      if (c.y > H+20) {
+        c.y = -10;
+        c.x = Math.random()*W;
+      }
+    });
+  }
+  function animateConfetti() {
+    drawConfetti();
+    updateConfetti();
+    requestAnimationFrame(animateConfetti);
+  }
+  animateConfetti();
+  </script>
+</body>
+</html>
